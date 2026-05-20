@@ -12,11 +12,23 @@ public class HealthSystem : MonoBehaviour
 
     [SerializeField]
     private HealthBarUI healthBar;
+    
+    [SerializeField]
+    private EnemyHealthBar FloatingHealthBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(maxHealth);
+        }
+        else
+        {
+            FloatingHealthBar.UpdateHealthBar(currentHealth, maxHealth);
+        }
+        
+        FloatingHealthBar = GetComponentInChildren<EnemyHealthBar>();
     }
 
     // Update is called once per frame
@@ -42,7 +54,15 @@ public class HealthSystem : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        healthBar.setHealth(currentHealth);
+        if (healthBar != null)
+        {
+            healthBar.setHealth(currentHealth);
+        }
+        else
+        {
+            FloatingHealthBar.UpdateHealthBar(currentHealth, maxHealth);
+        }
+        
         Debug.Log($"{gameObject.name} took {damage} damage");
         if (currentHealth <= 0f)
         {
