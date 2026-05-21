@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour, IController
     public Transform enemy;
     public float rotationSpeed = 10f;
     public GameObject[] allweapons;
-
+    public WeaponEntry[] equipment;
 
     private InputAction m_moveAction;
     private InputAction m_jumpAction;
@@ -181,6 +181,7 @@ public class PlayerController : MonoBehaviour, IController
                 {
                     m_animator.SetBool("TwoHanded", false);
                 }
+                DropCurrentWeapon();
             }
             
             allweapons[0].SetActive(true);
@@ -203,7 +204,7 @@ public class PlayerController : MonoBehaviour, IController
                 {
                     m_animator.SetBool("TwoHanded", false);
                     activeWeapon.SetActive(false);
-                    
+                    DropCurrentWeapon();
                 }
             }
             allweapons[1].SetActive(true);
@@ -220,11 +221,35 @@ public class PlayerController : MonoBehaviour, IController
             if (activeWeapon != null)
             {
                 activeWeapon.SetActive(false);
+                DropCurrentWeapon();
             }
             if (activeShield != null)
             {
                 activeShield.SetActive(false);
                 m_animator.SetBool("HasShield", false);
+
+                WeaponEntry currentEntry = null;
+
+                foreach (var equipmentPiece in equipment)
+                {
+                    if (equipmentPiece.equippedObject == activeShield)
+                    {
+                        currentEntry = equipmentPiece;
+                        break;
+                    }
+                }
+
+                if (currentEntry == null)
+                    return;
+
+                Vector3 dropPosition =
+                    transform.position + transform.forward;
+
+                Instantiate(
+                    currentEntry.worldPrefab,
+                    dropPosition,
+                    Quaternion.identity
+                );
                 activeShield = null;
             }
             allweapons[2].SetActive(true);
@@ -273,5 +298,39 @@ public class PlayerController : MonoBehaviour, IController
     public void DisableWeaponDamage()
     {
         currentHitbox.SetDamageActive(false);
+    }
+
+    private void DropCurrentWeapon()
+    {
+
+        if (activeWeapon == null)
+            return;
+        Debug.Log("Spawned");
+
+        WeaponEntry currentEntry = null;
+
+        foreach (var equipmentPiece in equipment)
+        {
+            if (equipmentPiece.equippedObject == activeWeapon)
+            {
+                currentEntry = equipmentPiece;
+                break;
+            }
+        }
+
+        if (currentEntry == null)
+            return;
+
+        Vector3 dropPosition =
+            transform.position + transform.forward;
+
+        Instantiate(
+            currentEntry.worldPrefab,
+            dropPosition,
+            Quaternion.identity
+        );
+
+        activeWeapon.SetActive(false);
+        activeWeapon = null;
     }
 }
