@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
@@ -7,6 +8,8 @@ public class HealthSystem : MonoBehaviour
     public float currentHealth;
     public float invincibilityTime = 1f;
     public bool isDead => currentHealth <= 0f;
+
+    public event Action OnDeath;
 
     private bool isInvincible;
     private Animator animator;
@@ -92,7 +95,9 @@ public class HealthSystem : MonoBehaviour
     {
         currentHealth = 0f;
         
-        int randomDeath = Random.Range(1, 6);
+        OnDeath?.Invoke();
+
+        int randomDeath = UnityEngine.Random.Range(1, 6);
 
         animator.SetBool("isRunning", false);
         animator.SetInteger("DeathAnim", randomDeath);

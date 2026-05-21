@@ -10,6 +10,8 @@ public class EnemyPeasantController : MonoBehaviour, IController
     private Animator animator;
     private bool isAttacking;
 
+    private HealthSystem playerHealth;
+
     private SwordHit currentHitbox;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +19,15 @@ public class EnemyPeasantController : MonoBehaviour, IController
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         currentHitbox = GetComponentInChildren<SwordHit>(true);
+
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<HealthSystem>();
+            if (playerHealth != null)
+            {
+                playerHealth.OnDeath += HandlePlayerDeath;
+            }
+        }
 
     }
 
@@ -104,5 +115,27 @@ public class EnemyPeasantController : MonoBehaviour, IController
     public void DisableWeaponDamage()
     {
         currentHitbox.SetDamageActive(false);
+    }
+
+    private void HandlePlayerDeath()
+    {
+        CancelInvoke();
+        Debug.Log("Event happened");
+
+        isAttacking = false;
+
+        navMeshAgent.isStopped = true;
+        navMeshAgent.velocity = Vector3.zero;
+        animator.SetBool("isRunning", false);
+
+        enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        if (playerHealth != null)
+        {
+            playerHealth.OnDeath -= HandlePlayerDeath;
+        }        
     }
 }
