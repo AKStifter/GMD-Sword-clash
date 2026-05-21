@@ -9,6 +9,8 @@ public class HealthSystem : MonoBehaviour
     public bool isDead => currentHealth <= 0f;
 
     private bool isInvincible;
+    private Animator animator;
+    private IController controller;
 
     [SerializeField]
     private HealthBarUI healthBar;
@@ -18,6 +20,8 @@ public class HealthSystem : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         currentHealth = maxHealth;
         if (healthBar != null)
         {
@@ -28,9 +32,12 @@ public class HealthSystem : MonoBehaviour
             FloatingHealthBar.UpdateHealthBar(currentHealth, maxHealth);
         }
         
-        FloatingHealthBar = GetComponentInChildren<EnemyHealthBar>();
     }
-
+    private void Awake()
+    {
+        FloatingHealthBar = GetComponentInChildren<EnemyHealthBar>();
+        controller = GetComponent<IController>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -84,6 +91,13 @@ public class HealthSystem : MonoBehaviour
     private void Die()
     {
         currentHealth = 0f;
+        
+        int randomDeath = Random.Range(1, 6);
+
+        animator.SetBool("isRunning", false);
+        animator.SetInteger("DeathAnim", randomDeath);
+        animator.SetTrigger("Die");        
+        controller.DisableControl();
 
         Debug.Log($"{gameObject.name} died");
 

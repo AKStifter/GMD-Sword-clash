@@ -3,19 +3,14 @@ using UnityEngine;
 public class SwordHit : MonoBehaviour
 {
     public float damage = 25f;
-    private bool canDealDamage;
-     public void EnableHitbox()
+    private bool canDealDamage = false;
+     public void SetDamageActive(bool isActive)
     {
-        canDealDamage = true;
-    }
-
-    public void DisableHitbox()
-    {
-        canDealDamage = false;
+        canDealDamage = isActive;
     }
     private void OnTriggerEnter(Collider other)
     {
-        // if( !canDealDamage) return;
+        if( !canDealDamage) return;
         
         HealthSystem health = other.GetComponent<HealthSystem>();
 

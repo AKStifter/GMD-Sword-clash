@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyPeasantController : MonoBehaviour
+public class EnemyPeasantController : MonoBehaviour, IController
 {
 
     public Transform player;
@@ -9,11 +9,14 @@ public class EnemyPeasantController : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Animator animator;
     private bool isAttacking;
+
+    private SwordHit currentHitbox;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        currentHitbox = GetComponentInChildren<SwordHit>(true);
 
     }
 
@@ -86,5 +89,20 @@ public class EnemyPeasantController : MonoBehaviour
     private void ResetAttack()
     {
         isAttacking = false;
+    }
+
+    public void DisableControl()
+    {
+        enabled = false;
+    }
+
+    public void EnableWeaponDamage()
+    {
+        currentHitbox?.SetDamageActive(true);
+    }
+
+    public void DisableWeaponDamage()
+    {
+        currentHitbox.SetDamageActive(false);
     }
 }

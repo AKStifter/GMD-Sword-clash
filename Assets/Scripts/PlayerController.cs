@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IController
 {
     public InputActionAsset InputActions;
     public Transform enemy;
@@ -30,16 +30,18 @@ public class PlayerController : MonoBehaviour
     public float WalkSpeed = 5;
     public float JumpSpeed = 5;
 
+    private bool isDead = false;
+    private SwordHit currentHitbox;
 
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
     }
 
-    private void OnDisable()
-    {
-        InputActions.FindActionMap("Player").Disable();
-    }
+    // private void OnDisable()
+    // {
+    //     InputActions.FindActionMap("Player").Disable();
+    // }
 
     private void Awake()
     {
@@ -63,12 +65,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDead) return;
 
          Vector3 direction = enemy.position - transform.position;
         direction.y = 0f; // ignore vertical difference
 
-        if (direction.sqrMagnitude < 0.001f)
-            return;
+        // if (direction.sqrMagnitude < 0.001f)
+        //     return;
 
         m_moveAMT = m_moveAction.ReadValue<Vector2>();
 
@@ -102,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead) return;
         FaceEnemy();
         Walking();
     }
@@ -181,6 +185,7 @@ public class PlayerController : MonoBehaviour
             
             allweapons[0].SetActive(true);
             activeWeapon = allweapons[0];
+            currentHitbox = activeWeapon.GetComponentInChildren<SwordHit>(true);
             m_animator.SetBool("OneHandSword", true);
 
             nearbyWeapon = null;
@@ -193,12 +198,12 @@ public class PlayerController : MonoBehaviour
 
             if (activeWeapon != null)
             {
-                activeWeapon.SetActive(false);
                 
                 if(activeWeapon.gameObject.tag == "GreatSword")
                 {
                     m_animator.SetBool("TwoHanded", false);
                     activeWeapon.SetActive(false);
+                    
                 }
             }
             allweapons[1].SetActive(true);
@@ -224,6 +229,7 @@ public class PlayerController : MonoBehaviour
             }
             allweapons[2].SetActive(true);
             activeWeapon = allweapons[2];
+            currentHitbox = activeWeapon.GetComponentInChildren<SwordHit>(true);
             m_animator.SetBool("OneHandSword", false);
             m_animator.SetBool("TwoHanded", true);
 
@@ -243,7 +249,7 @@ public class PlayerController : MonoBehaviour
     {
         isChargingAttack = false;
 
-        if (attackHoldTime < 0.1f)
+        if (attackHoldTime < 0.2f)
         {
             m_animator.SetTrigger("Attack");
         }
@@ -251,5 +257,21 @@ public class PlayerController : MonoBehaviour
         {
             m_animator.SetTrigger("HeavyAttack");
         }
+    }
+
+    public void DisableControl()
+    {
+        enabled = false;
+        // isDead = true;   
+    }
+
+    public void EnableWeaponDamage()
+    {
+        currentHitbox?.SetDamageActive(true);
+    }
+
+    public void DisableWeaponDamage()
+    {
+        currentHitbox.SetDamageActive(false);
     }
 }
