@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 575dd15f676db99408bdae0db721b667
+guid: 06e7999050801f14dacaf919126bd038
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Greatsword block
+      name: Shield block
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

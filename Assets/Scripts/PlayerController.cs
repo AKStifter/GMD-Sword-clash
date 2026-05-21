@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, IController
+public class PlayerController : MonoBehaviour, IController, ICombat
 {
     public InputActionAsset InputActions;
     public Transform enemy;
@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour, IController
     private bool isDead = false;
     private SwordHit currentHitbox;
 
+    public bool isBlocking{ get; private set;}
+
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour, IController
         m_moveAction = InputSystem.actions.FindAction("Move");
         m_jumpAction = InputSystem.actions.FindAction("Jump");
         m_attackAction = InputSystem.actions.FindAction("Attack");
-        // m_defendAction = InputSystem.actions.FindAction("Defend");  
+        m_defendAction = InputSystem.actions.FindAction("Defend");  
         interactAction = InputSystem.actions.FindAction("Interact");
     }
 
@@ -96,10 +98,17 @@ public class PlayerController : MonoBehaviour, IController
             ReleaseAttack();
         }
         
-        // if (m_defendAction.WasPressedThisFrame())
-        // {
-        //     m_animator.SetTrigger("Defend");
-        // }
+        isBlocking = m_defendAction.IsPressed();
+        m_animator.SetBool("isDefending", isBlocking);
+
+        if (m_animator.GetBool("isDefending"))
+        {
+            WalkSpeed = 2f;
+        }
+        else
+        {
+            WalkSpeed = 5f;
+        }
 
     }
 

@@ -14,7 +14,7 @@ public class HealthSystem : MonoBehaviour
     private bool isInvincible;
     private Animator animator;
     private IController controller;
-
+    private ICombat combat;
     [SerializeField]
     private HealthBarUI healthBar;
     
@@ -40,6 +40,7 @@ public class HealthSystem : MonoBehaviour
     {
         FloatingHealthBar = GetComponentInChildren<EnemyHealthBar>();
         controller = GetComponent<IController>();
+        combat = GetComponent<ICombat>();
     }
     // Update is called once per frame
     void Update()
@@ -59,6 +60,11 @@ public class HealthSystem : MonoBehaviour
         if (isInvincible) return;
         
         if (isDead) return;
+
+        if (combat != null && combat.isBlocking)
+        {
+            return;
+        }
 
         currentHealth -= damage;
 

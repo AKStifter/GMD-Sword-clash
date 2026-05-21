@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyPeasantController : MonoBehaviour, IController
+public class EnemyPeasantController : MonoBehaviour, IController, ICombat
 {
 
+    public bool isBlocking{ get; private set;}
     public Transform player;
     public float attackRange;
     private NavMeshAgent navMeshAgent;
