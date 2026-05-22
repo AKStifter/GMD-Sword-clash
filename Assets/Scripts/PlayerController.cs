@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour, IController, ICombat
         m_attackAction = InputSystem.actions.FindAction("Attack");
         m_defendAction = InputSystem.actions.FindAction("Defend");  
         interactAction = InputSystem.actions.FindAction("Interact");
+
+        AudioManager.Instance.ChangeMusic(SoundType.Battle_Music);
     }
 
     // Update is called once per frame

@@ -63,6 +63,7 @@ public class HealthSystem : MonoBehaviour
 
         if (combat != null && combat.isBlocking)
         {
+            AudioManager.Instance.Play(SoundType.Hit_Steel);
             return;
         }
 
