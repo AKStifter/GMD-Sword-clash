@@ -13,7 +13,7 @@ public class ArenaEventManager : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitForSeconds(startTime);
-
+        Debug.Log("Event");
         currentEvent = events[Random.Range(0, events.Count)] as IArenaEvent;
         currentEvent.StartEvent();
     }
