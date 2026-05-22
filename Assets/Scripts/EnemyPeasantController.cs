@@ -139,4 +139,9 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat
             playerHealth.OnDeath -= HandlePlayerDeath;
         }        
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        navMeshAgent.speed = 2f;
+    }
 }

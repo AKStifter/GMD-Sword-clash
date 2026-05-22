@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour, IController, ICombat
 
     public bool isBlocking{ get; private set;}
 
+    private bool isInWater = false;
+
     private void OnEnable()
     {
         InputActions.FindActionMap("Player").Enable();
@@ -105,11 +107,25 @@ public class PlayerController : MonoBehaviour, IController, ICombat
 
         if (m_animator.GetBool("isDefending"))
         {
-            WalkSpeed = 2f;
+            if (isInWater)
+            {
+                WalkSpeed = 1f;
+            }
+            else
+            {
+                WalkSpeed = 2f;
+            }
         }
         else
         {
-            WalkSpeed = 5f;
+            if (isInWater)
+            {
+                WalkSpeed = 3f;
+            }
+            else
+            {
+                WalkSpeed = 5f;
+            }
         }
 
     }
@@ -170,6 +186,12 @@ public class PlayerController : MonoBehaviour, IController, ICombat
             || other.gameObject.tag == "GreatSword")
         {
             nearbyWeapon = other.gameObject;
+        }
+
+
+        if (other.CompareTag("water"))
+        {
+            isInWater = true;
         }
     }
     private void OnTriggerExit(Collider other)

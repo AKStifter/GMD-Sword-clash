@@ -7,6 +7,7 @@ TagManager:
   - Sword- bastard
   - PaladinShield
   - GreatSword
+  - water
   layers:
   - Default
   - TransparentFX
