@@ -2577,6 +2577,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dcc23ed31818764aabce35d2f65d5a6, type: 3}
+--- !u!1 &175348750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+  m_PrefabInstance: {fileID: 869711091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &176846652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13805,6 +13810,83 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 0, z: 4}
   m_Center: {x: 2, y: 0, z: -2}
+--- !u!1001 &869711091
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.085590154
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.51
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: baf01bda27fadb843931db8a1303d4fb, type: 2}
+    - target: {fileID: 919132149155446097, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_Name
+      value: DiscoBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a0e90812dc9a0b4b8a7acf360dcfdc5, type: 3}
 --- !u!1 &870286558
 GameObject:
   m_ObjectHideFlags: 0
@@ -22221,6 +22303,52 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 497620672}
   m_SourcePrefab: {fileID: 100100000, guid: c863f656782d099438e2f1ba789301c8, type: 3}
+--- !u!1 &1383441515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383441517}
+  - component: {fileID: 1383441516}
+  m_Layer: 0
+  m_Name: DiscoEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1383441516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383441515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09800c2057c7134a8e723a47199cc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DiscoEvent
+  DiscoBall: {fileID: 175348750}
+  Camera: {fileID: 330585543}
+--- !u!4 &1383441517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383441515}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.87861, y: -0, z: 3.37527}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1383827549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 18909760996641151, guid: c863f656782d099438e2f1ba789301c8, type: 3}
@@ -25789,6 +25917,10 @@ MonoBehaviour:
   - Type: 3
     Clip: {fileID: 8300000, guid: 3d9b71362e4212f4b8cc28de78ca0191, type: 3}
     Volume: 0.959
+    Source: {fileID: 0}
+  - Type: 4
+    Clip: {fileID: 8300000, guid: 4db88fe6413a47445843942157363322, type: 3}
+    Volume: 0.817
     Source: {fileID: 0}
 --- !u!4 &1693714310
 Transform:
@@ -31934,7 +32066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaEventManager
   events:
-  - {fileID: 651141548}
+  - {fileID: 1383441516}
   startTime: 10
 --- !u!4 &2117660854
 Transform:
@@ -32504,3 +32636,5 @@ SceneRoots:
   - {fileID: 2117660854}
   - {fileID: 1984738005}
   - {fileID: 651141549}
+  - {fileID: 869711091}
+  - {fileID: 1383441517}
