@@ -80,7 +80,7 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat, IMatc
             Quaternion.LookRotation(lookDirection);
 
         // Play attack animation
-        int randomAttack = Random.Range(0, 3);
+        int randomAttack = Random.Range(1, 4);
 
         animator.SetInteger("Attack", randomAttack);
 
