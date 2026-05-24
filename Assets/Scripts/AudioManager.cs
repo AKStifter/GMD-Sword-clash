@@ -42,13 +42,13 @@ public class AudioManager : MonoBehaviour
  
  
     //Call this method to play a sound
-    public void Play(SoundType type)
+    public float Play(SoundType type)
     {
         //Make sure there's a sound assigned to your specified type
         if (!_soundDictionary.TryGetValue(type, out Sound s))
         {
             Debug.LogWarning($"Sound type {type} not found!");
-            return;
+            return 0f;
         }
  
         //Creates a new sound object
@@ -64,6 +64,8 @@ public class AudioManager : MonoBehaviour
  
         //Destroy the object
         Destroy(soundObj, s.Clip.length);
+
+        return s.Clip.length;
     }
  
     //Call this method to change music tracks

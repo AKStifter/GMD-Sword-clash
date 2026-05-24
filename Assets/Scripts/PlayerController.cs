@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, IController, ICombat
+public class PlayerController : MonoBehaviour, IController, ICombat, IMatch
 {
     public InputActionAsset InputActions;
     public Transform enemy;
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour, IController, ICombat
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        enabled = false;
         m_animator = GetComponent<Animator>();
         m_rigidbody = GetComponent<Rigidbody>();      
 
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour, IController, ICombat
         m_defendAction = InputSystem.actions.FindAction("Defend");  
         interactAction = InputSystem.actions.FindAction("Interact");
 
-        AudioManager.Instance.ChangeMusic(SoundType.Battle_Music);
+        
     }
 
     // Update is called once per frame
@@ -365,5 +365,10 @@ public class PlayerController : MonoBehaviour, IController, ICombat
 
         activeWeapon.SetActive(false);
         activeWeapon = null;
+    }
+
+    public void MatchStart()
+    {
+        enabled = true;
     }
 }

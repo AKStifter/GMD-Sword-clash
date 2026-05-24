@@ -6,6 +6,8 @@ public enum SoundType
     Battle_Music,
     Hit_Flesh,
     Hit_Steel,
-    DiscoEventMusic
-    
+    DiscoEventMusic,
+    BeggininingAnnouncement,
+    Victory,
+    Defeat
 }

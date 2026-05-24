@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyPeasantController : MonoBehaviour, IController, ICombat
+public class EnemyPeasantController : MonoBehaviour, IController, ICombat, IMatch
 {
 
     public bool isBlocking{ get; private set;}
@@ -17,6 +17,7 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enabled = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         currentHitbox = GetComponentInChildren<SwordHit>(true);
@@ -144,4 +145,11 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat
     {
         navMeshAgent.speed = 2f;
     }
+
+    public void MatchStart()
+    {
+        enabled = true;
+    }
+
+
 }

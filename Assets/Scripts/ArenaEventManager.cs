@@ -2,25 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArenaEventManager : MonoBehaviour
+public class ArenaEventManager : MonoBehaviour, IMatch
 {
 
     public List<MonoBehaviour> events;
 
     public float startTime;
     private IArenaEvent currentEvent;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    IEnumerator Start()
+
+    private bool matchStarted = false;
+
+    public void MatchStart()
     {
-        yield return new WaitForSeconds(startTime);
-        Debug.Log("Event");
-        currentEvent = events[Random.Range(0, events.Count)] as IArenaEvent;
-        currentEvent.StartEvent();
+        if (matchStarted) return;
+
+        matchStarted = true;
+
+        StartCoroutine(StartEvent());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator StartEvent()
     {
-        
+        if (matchStarted)
+        {
+           yield return new WaitForSeconds(startTime);
+        Debug.Log("Event");
+        currentEvent = events[Random.Range(0, events.Count)] as IArenaEvent;
+        currentEvent.StartEvent(); 
+        }
     }
 }
