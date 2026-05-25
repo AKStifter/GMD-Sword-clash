@@ -1,0 +1,8 @@
+# Blog 1: Roll a ball project
+As the beginning of working with unity, roll a ball project was used to learn the basics of creating games. Following this tutorial a number of basic mechanics were learned. This includes how to make the map terrain, with simple shapes. How to manipulate the objects including their size, position and rotatin. How to make a simple player controller and move the player as well how to move the camera. And how we can simulate the gravity with the rigidBody component.
+
+Additionally, during the tutorial collectibles were created with their own materials and hit detection and collison was implemented by utilising box colliders to detect and to pick them up. How to make a simple UI that would display the score and the end game result was also made. For the UI we needed to import additional package to the project. The TMP Essentials to we could use the TextMeshPro for text. For many of these things to work we also made scripts that are part of the objects as their components
+
+Later, we made some custom made obstacles for the level. In my case it was mostly simple shapes like a cross, pillars and slopes. We also made an enemy that would chase us and if caught would result in game over. This was made possible by utilising nav mesh agents, tweaking their parameters and baking the nav mesh for them to know where they can traverse.
+
+Finally, we made a build of the game so it could be played as a standalone game. This was simple, we just needed to make a build profile, select the scenes that enter the build and leave it all to unity.
