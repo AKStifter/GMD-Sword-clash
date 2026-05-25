@@ -40,7 +40,7 @@ During the creation of the project various third party sources were used. These 
 
 [Walls](https://assetstore.unity.com/packages/2d/textures-materials/hand-painted-rocks-road-texture-196235)
 
-[Song - Main menu]([https://pixabay.com/music/pop-echoes-of-the-realms-373083/](https://pixabay.com/music/electronic-epic-fantasy-adventure-music-echoes-of-the-realm-521381/))
+[Song - Main menu](https://pixabay.com/music/electronic-epic-fantasy-adventure-music-echoes-of-the-realm-521381/)
 
 [Song - Battle](https://uppbeat.io/t/kevin-macleod/celtic-impulse)
 
