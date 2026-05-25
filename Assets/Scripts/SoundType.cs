@@ -9,5 +9,15 @@ public enum SoundType
     DiscoEventMusic,
     BeggininingAnnouncement,
     Victory,
-    Defeat
+    Defeat,
+    AttackSwing,
+    WaterGushing,
+    Running,
+    RunningWet,
+    NPCLine1,
+    NPCLine2,
+    NPCLine3,
+    DiscoDeclaration,
+    FloodDeclaration,
+    SpikesDeclaraion
 }

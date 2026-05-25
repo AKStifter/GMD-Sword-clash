@@ -10,19 +10,11 @@ public class SpikeTrapEvent : MonoBehaviour, IArenaEvent
     }
     public void StartEvent()
     {
+        AudioManager.Instance.Play(SoundType.SpikesDeclaraion);
+        
         foreach (SpikeTrapGate pit in pits)
         {
             pit.ActivateTrap();
         }
-    }
-
-    public void StopEvent()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void UpdateEvent()
-    {
-        throw new System.NotImplementedException();
     }
 }

@@ -13,18 +13,11 @@ public class DiscoEvent : MonoBehaviour, IArenaEvent
 
     public void StartEvent()
     {
+        AudioManager.Instance.Play(SoundType.DiscoDeclaration);
+        
         DiscoBall.SetActive(true);
         AudioManager.Instance.ChangeMusic(SoundType.DiscoEventMusic);
         cameraController.ShakeCamera(60f, 0.1f);
     }
 
-    public void StopEvent()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void UpdateEvent()
-    {
-        throw new System.NotImplementedException();
-    }
 }

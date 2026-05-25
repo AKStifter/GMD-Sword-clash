@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,11 +11,12 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat, IMatc
     private NavMeshAgent navMeshAgent;
     private Animator animator;
     private bool isAttacking;
-
     private HealthSystem playerHealth;
-
     private SwordHit currentHitbox;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Voice Lines")]
+    public SoundType[] voiceLines;
+    private Coroutine randomSpeaking;
+
     void Start()
     {
         enabled = false;
@@ -66,6 +68,7 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat, IMatc
             return;
 
         isAttacking = true;
+        AudioManager.Instance.Play(SoundType.AttackSwing);
 
         // Stop moving
         navMeshAgent.isStopped = true;
@@ -122,8 +125,10 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat, IMatc
     private void HandlePlayerDeath()
     {
         CancelInvoke();
-        Debug.Log("Event happened");
-
+        if (randomSpeaking != null)
+        {
+            StopCoroutine(randomSpeaking);
+        }
         isAttacking = false;
 
         navMeshAgent.isStopped = true;
@@ -139,6 +144,10 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat, IMatc
         {
             playerHealth.OnDeath -= HandlePlayerDeath;
         }        
+        if (randomSpeaking != null)
+        {
+            StopCoroutine(randomSpeaking);
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -149,7 +158,30 @@ public class EnemyPeasantController : MonoBehaviour, IController, ICombat, IMatc
     public void MatchStart()
     {
         enabled = true;
-    }
 
+        randomSpeaking = StartCoroutine(RandomSpeaking());
+    }
+    IEnumerator RandomSpeaking()
+    {
+        while (enabled)
+        {
+
+            yield return new WaitForSeconds(7f);
+
+            if (!enabled || player == null)
+                yield break;
+
+            if (GetComponent<HealthSystem>().isDead)
+                yield break;
+
+            if (voiceLines.Length > 0)
+            {
+                SoundType randomLine =
+                    voiceLines[Random.Range(0, voiceLines.Length)];
+
+                AudioManager.Instance.Play(randomLine);
+            }
+        }
+    }
 
 }

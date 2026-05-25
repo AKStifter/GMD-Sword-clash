@@ -10,9 +10,11 @@ public class FloodEvent : MonoBehaviour, IArenaEvent
     private bool isFlooding = false;
     public void StartEvent()
     {
-        //Play the voice recording for the event start
+        AudioManager.Instance.Play(SoundType.FloodDeclaration);
         waterVolume.SetActive(true);
         isFlooding = true;
+        AudioManager.Instance.Play(SoundType.WaterGushing);
+
     }
 
     public void StopEvent()
@@ -20,25 +22,14 @@ public class FloodEvent : MonoBehaviour, IArenaEvent
         isFlooding = false;
     }
 
-    public void UpdateEvent()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (isFlooding)
         {
-             Transform waterTransform = waterVolume.transform;
+            Transform waterTransform = waterVolume.transform;
 
-            // Gradually move water upward
+            // Gradually moves water upward
             Vector3 pos = waterTransform.position;
             pos.y = Mathf.MoveTowards(pos.y, targetHeight, riseSpeed * Time.deltaTime);
             waterTransform.position = pos;

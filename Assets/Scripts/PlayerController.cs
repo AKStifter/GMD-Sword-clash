@@ -74,10 +74,7 @@ public class PlayerController : MonoBehaviour, IController, ICombat, IMatch
         if(isDead) return;
 
          Vector3 direction = enemy.position - transform.position;
-        direction.y = 0f; // ignore vertical difference
-
-        // if (direction.sqrMagnitude < 0.001f)
-        //     return;
+        direction.y = 0f; 
 
         m_moveAMT = m_moveAction.ReadValue<Vector2>();
 
@@ -172,8 +169,8 @@ public class PlayerController : MonoBehaviour, IController, ICombat, IMatch
     m_rigidbody.MovePosition(
         m_rigidbody.position + move * WalkSpeed * Time.fixedDeltaTime
     );
-
-    m_animator.SetBool("isRunning", inputDir.sqrMagnitude > 0.01f);
+    bool isMoving = m_moveAMT.magnitude > 0.1f;
+    m_animator.SetBool("isRunning", isMoving);
 }
     public void Jump()
     {
@@ -306,6 +303,7 @@ public class PlayerController : MonoBehaviour, IController, ICombat, IMatch
     private void ReleaseAttack()
     {
         isChargingAttack = false;
+        AudioManager.Instance.Play(SoundType.AttackSwing);
 
         if (attackHoldTime < 0.2f)
         {

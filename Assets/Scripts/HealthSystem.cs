@@ -66,6 +66,7 @@ public class HealthSystem : MonoBehaviour
             AudioManager.Instance.Play(SoundType.Hit_Steel);
             return;
         }
+        AudioManager.Instance.Play(SoundType.Hit_Flesh);
 
         currentHealth -= damage;
 
