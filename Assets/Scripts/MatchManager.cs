@@ -53,6 +53,9 @@ public class MatchManager : MonoBehaviour
             else if (PlayerVictory)
             {
                 SequenceStarted = true;
+
+                AudioManager.Instance.StopMusic();
+                EventManager.StopEvents();
                 recordingLength = AudioManager.Instance.Play(SoundType.Victory);
                 StartCoroutine(NextScene(recordingLength));
             }
@@ -69,6 +72,17 @@ public class MatchManager : MonoBehaviour
     IEnumerator NextScene(float waitTime)
     {
         yield return new WaitForSeconds(waitTime + 5f);
+
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        if (currentScene + 1 >= SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(0); // Main menu scene
+        }
+        else
+        {
+            SceneManager.LoadScene(currentScene + 1);
+        }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

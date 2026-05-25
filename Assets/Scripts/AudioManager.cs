@@ -87,4 +87,12 @@ public class AudioManager : MonoBehaviour
         _musicSource.clip = track.Clip;
         _musicSource.Play();
     }
+
+    public void StopMusic()
+{
+    if (_musicSource != null && _musicSource.isPlaying)
+    {
+        _musicSource.Stop();
+    }
+}
 }
