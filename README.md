@@ -12,8 +12,11 @@ Welcome to the Sword Clash read me. This project was created for the purpose of 
 During the creation of the project various third party sources were used. These are:
 
 [Characters and animations](https://www.mixamo.com/#/)
+
 [Water sound](https://assetstore.unity.com/packages/audio/ambient/nature/free-water-stream-sounds-226371)
+
 [Footstep sound](https://assetstore.unity.com/packages/audio/sound-fx/classic-footstep-sfx-173668)
+
 [Crown](https://assetstore.unity.com/packages/3d/props/clothing/accessories/golden-jewelry-use-as-necklace-bracelet-ring-215018)
 [Water Shader](https://assetstore.unity.com/packages/vfx/shaders/urp-stylized-water-shader-proto-series-187485)
 [Skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
