@@ -1,4 +1,6 @@
 Welcome to the Sword Clash read me. This project was created for the purpose of the Game Development Course for the VIA University College.
+# Youtube link
+[Sword Clash](https://www.youtube.com/watch?v=pqXB_pQys50)
 
 # Blog links
 [Blog 1](https://github.com/AKStifter/GMD-Sword-clash/blob/main/Blog1-%20Roll%20a%20ball.md)
