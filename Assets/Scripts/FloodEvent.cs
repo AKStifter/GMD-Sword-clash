@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class FloodEvent : MonoBehaviour, IArenaEvent
 {
-
-    public GameObject waterVolume;  // Assign your water object in inspector
-    public float targetHeight = 1f;  // The height you want to reach
+    public GameObject waterVolume; 
+    public float targetHeight = 1f;  // The desired water height
     public float riseSpeed = 1f; 
 
     private bool isFlooding = false;
