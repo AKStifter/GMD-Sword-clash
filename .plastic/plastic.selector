@@ -1,4 +1,0 @@
-repository "Sword clash/Sword clash@6872352395806@cloud"
-  path "/"
-    br "/main"
-    co "/main"
