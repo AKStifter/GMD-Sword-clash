@@ -71,5 +71,7 @@ During the creation of the project various third party sources were used. These 
 [Main menu](https://www.youtube.com/watch?v=A8B_easomtg)
 
 [Pause menu](https://www.youtube.com/watch?v=bt2NSujQ4yw)
+
 [Enemy health bar](https://www.youtube.com/watch?v=_lREXfAMUcE)
-[Audio manager](https://www.youtube.com/watch?v=tR24j3WAXy0)
+
+[Audio manager](https://www.youtube.com/watch?v=2ldKKV1h5Ww)
